@@ -226,9 +226,9 @@
                           <form action="#">
                             <div class="form-group">
                               <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Search Keyword">
+                                <input type="text" class="form-control" placeholder="Search Keyword" required='required'>
                                 <div class="input-group-append">
-                                  <button class="btn" type="button"><i class="ti-search"></i></button>
+                                  <button class="btn" type="button"><i class="ti-search"></i>search</button>
                                 </div>
                               </div>
                             </div>
@@ -237,13 +237,13 @@
                       </aside>
                       <aside class="single_sidebar_widget post_category_widget" style="margin-top: -15%;">
                         <h4 class="widget_title">Tell us your story</h4>
-                        <form action="#">
+                        <form action="/report" method="POST">
                             <div class="form-group">
                               <div class="input-group mb-3">
-                                <textarea class="form-control" type="text">Enter Message</textarea>
+                                <textarea class="form-control" name="message" type="text" required="required">Enter Message</textarea>
                               </div>
                             </div>
-                            <button class="primary_btn rounded-0 primary-bg text-white w-100" type="submit">Search</button>
+                            <button class="primary_btn rounded-0 primary-bg text-white w-100" type="submit">Enter</button>
                           </form>
                       </aside>
 

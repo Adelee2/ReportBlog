@@ -6,27 +6,28 @@ var logger = require('morgan');
 var session = require('express-session');//module for allocating sessions
 var passport = require('passport'); //module for password
 var LocalStrategy = require('passport-local').Strategy; //module for password
-var multer  = require('multer');  //module for uploading pictures
+// var multer  = require('multer');  //module for uploading pictures
 // var upload = multer({ storage: filestorage, fileFilter:fileFilters}); //module for uploading pictures
 var flash = require('connect-flash');  //module for flash messages
 var mongo = require('mongodb'); //module to connect to db
 var bcrypt= require('bcryptjs');  //module for encrypting and decrypting password
 var mongoose = require('mongoose');//module to talk to database
+// var csrf = require('csurf');
 
 var db = mongoose.Connection; 
 
-// var indexRouter = require('./routes/index');
+var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 // app.use(app.router);
 // indexRouter.initialize(app);
 
+// var csrfprotection = csrf();
 var app = express();
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-
+// app.use(csrfprotection);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -40,7 +41,9 @@ app.use(session({secret:'my secret to node', saveUninitialized:false, resave:fal
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.use('/', indexRouter);
+app.use(flash());
+
+app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
