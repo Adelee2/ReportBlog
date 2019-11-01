@@ -35,6 +35,12 @@
 <div id="login-box-holder">
 <div class="row">
 <div class="col-xs-12">
+	<%if(errormessage !==null){%>
+		<div class="alert alert-danger" role="alert" style="text-align: center; "><%=errormessage%></div>
+	<%}
+	else if(successmessage !==null){%>
+		<div class="alert alert-success" role="alert" style="text-align: center;"><%=successmessage%></div>
+	<%}%>
 <header id="login-header">
 <div id="login-logo">
 	<h4 style="font-size: 100%; color: whitesmoke;">Login</h4>

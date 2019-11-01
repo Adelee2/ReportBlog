@@ -9,6 +9,7 @@
     "bcryptjs": "^2.4.3",
     "connect-flash": "*",
     "cookie-parser": "~1.4.4",
+    "csurf": "^1.10.0",
     "debug": "~2.6.9",
     "ejs": "^2.6.9",
     "express": "~4.16.1",

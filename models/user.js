@@ -23,13 +23,13 @@ var userschema = mongoose.Schema({
     profileimg:{
         type: String
     },
-    messages:{
-        mssg:{
-            type: String
+    mssg:{
+        type: String,
+        default:""
         },
-        mssgdate:{
-            type: Date
-        }
+    mssgdate:{
+        type: Date,
+        default:null
     }
 });
 
@@ -38,10 +38,27 @@ var User = module.exports= mongoose.model('User',userschema);
 module.exports.getUserById = function(id,callback){
     User.findById(id,callback);
 };
-
-module.exports.getUserByUsername = function(username,callback){
-    var query = {username:username};
+// module.exports.getPasswordByemail = function(email,callback){
+//      User.find({password:/host/}).where('email').equals(email).exec(callback);
+//     // console.log(userarr);
+//     // return userarr;
+// };
+module.exports.getUserByUsername = function(email,callback){
+     User.find({fullname:/host/}).where('email').equals(email).exec(callback);
+    // return userarr.fullname;
+    // var query = {fullname:user};
+    // User.findOne(query,callback);
+};
+module.exports.getUserByprofile = function(email,callback){
+    var userarr = User.find({profileimg:/host/}).where('email').equals(email).exec(callback);
+    return userarr.profileimg;
+    // var query = {fullname:user};
+    // User.findOne(query,callback);
+};
+module.exports.getUserByEmail = function(email,callback){
+    var query = {email:email};
     User.findOne(query,callback);
+    // console.log(User.findOne(query,callback));
 };
 
 module.exports.comparePassword = function(candidatepass, hash, callback){
