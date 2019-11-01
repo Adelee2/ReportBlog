@@ -4,6 +4,7 @@ var passport = require('passport'); //module for password
 var LocalStrategy = require('passport-local').Strategy; //module for passwordvar router = express.Router();
 var multer  = require('multer');  //module for uploading pictures
 var upload = multer({ storage: filestorage}); //module for uploading pictures
+var router = express.Router();
 
 var filestorage = multer.diskStorage({
   destination:(req,file,cb)=>{
